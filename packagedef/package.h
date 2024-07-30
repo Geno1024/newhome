@@ -6,7 +6,8 @@
 #ifndef NEWHOME_PACKAGE_H
 #define NEWHOME_PACKAGE_H
 
-#include <stdint-gcc.h>
+#include <stdint.h>
+#include <stdio.h>
 
 typedef enum NHCompressionMethod
 {
@@ -41,10 +42,16 @@ typedef struct NHPackage
     char timestamp[4];
     int32_t packageNameLength;
     char *packageName;
-    int32_t metadataSize;
-    NHPackageMetadata *metadata;
-    int32_t fileEntryLength;
-    NHPackageFileEntry *fileEntries;
+    int32_t metadataCount;
+    NHPackageMetadata **metadata;
+    int32_t fileEntryCount;
+    NHPackageFileEntry **fileEntries;
 } NHPackage;
+
+NHPackage *NHPackageNew$1();
+
+void NHPackageDelete$1(NHPackage *package);
+
+void NHPackageSave$1(NHPackage *package, FILE *file);
 
 #endif //NEWHOME_PACKAGE_H
