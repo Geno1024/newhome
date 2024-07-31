@@ -31,26 +31,26 @@ void NHPackageSave$1(NHPackage *package, FILE *file)
     fwrite(package->majorVersion, sizeof(char), 2, file);
     fwrite(package->minorVersion, sizeof(char), 2, file);
     fwrite(package->timestamp, sizeof(char), 4, file);
-    fprintf(file, "%d", package->packageNameLength);
+    fwrite(&package->packageNameLength, sizeof(int32_t), 1, file);
     fwrite(package->packageName, sizeof(char), package->packageNameLength, file);
-    fprintf(file, "%d", package->metadataCount);
+    fwrite(&package->metadataCount, sizeof(int32_t), 1, file);
     for (int i = 0; i < package->metadataCount; i++)
     {
         NHPackageMetadata *thiz = package->metadata[i];
-        fprintf(file, "%d", thiz->keyLength);
+        fwrite(&thiz->keyLength, sizeof(int32_t), 1, file);
         fwrite(thiz->key, sizeof(char), thiz->keyLength, file);
-        fprintf(file, "%d", thiz->valueLength);
+        fwrite(&thiz->valueLength, sizeof(int32_t), 1, file);
         fwrite(thiz->value, sizeof(char), thiz->valueLength, file);
     }
-    fprintf(file, "%d", package->fileEntryCount);
+    fwrite(&package->fileEntryCount, sizeof(int32_t), 1, file);
     for (int i = 0; i < package->fileEntryCount; i++)
     {
         NHPackageFileEntry *thiz = package->fileEntries[i];
-        fprintf(file, "%d", thiz->fileNameLength);
+        fwrite(&thiz->fileNameLength, sizeof(int32_t), 1, file);
         fwrite(thiz->fileName, sizeof(char), thiz->fileNameLength, file);
-        fprintf(file, "%d", thiz->compressionMethod);
-        fprintf(file, "%d", thiz->compressedSize);
-        fprintf(file, "%d", thiz->uncompressedSize);
+        fwrite(&thiz->compressionMethod, sizeof(int32_t), 1, file);
+        fwrite(&thiz->compressedSize, sizeof(int32_t), 1, file);
+        fwrite(&thiz->uncompressedSize, sizeof(int32_t), 1, file);
         fwrite(thiz->compressedBody, sizeof(char), thiz->compressedSize, file);
 
     }
