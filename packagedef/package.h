@@ -9,49 +9,59 @@
 #include <stdint.h>
 #include <stdio.h>
 
-typedef enum NHCompressionMethod
+typedef enum NHPackage$1CompressionMethod
 {
     Plain,
     Deflate,
     Gzip
-} NHCompressionMethod;
+} NHPackage$1CompressionMethod;
 
-typedef struct NHPackageMetadata
+typedef struct NHPackage$1Metadata
 {
     int32_t keyLength;
     char *key;
     int32_t valueLength;
     char *value;
-} NHPackageMetadata;
+} NHPackage$1Metadata;
 
-typedef struct NHPackageFileEntry
+typedef struct NHPackage$1FileEntry
 {
     int32_t fileNameLength;
     char *fileName;
-    NHCompressionMethod compressionMethod;
+    NHPackage$1CompressionMethod compressionMethod;
     int32_t compressedSize;
     int32_t uncompressedSize;
     char *compressedBody;
-} NHPackageFileEntry;
+} NHPackage$1FileEntry;
 
-typedef struct NHPackage
+typedef struct NHPackage$1
 {
     char magic[4];
     char majorVersion[2];
     char minorVersion[2];
-    char timestamp[4];
+    int64_t timestamp;
     int32_t packageNameLength;
     char *packageName;
     int32_t metadataCount;
-    NHPackageMetadata **metadata;
+    NHPackage$1Metadata **metadata;
     int32_t fileEntryCount;
-    NHPackageFileEntry **fileEntries;
-} NHPackage;
+    NHPackage$1FileEntry **fileEntries;
+} NHPackage$1;
+#define NHPackage NHPackage$1
 
-NHPackage *NHPackageNew$1();
+NHPackage$1 *NHPackage$1New();
+#define NHPackageNew NHPackage$1New
 
-void NHPackageDelete$1(NHPackage *package);
+void NHPackage$1Delete(NHPackage$1 *package);
+#define NHPackageDelete NHPackage$1Delete
 
-void NHPackageSave$1(NHPackage *package, FILE *file);
+NHPackage$1 *NHPackage$1SetTimestamp(NHPackage$1 *package, int64_t timestamp);
+#define NHPackageSetTimestamp NHPackage$1SetTimestamp
+
+NHPackage$1 *NHPackage$1SetPackageName(NHPackage$1 *package, char *name);
+#define NHPackageSetPackageName NHPackage$1SetPackageName
+
+void NHPackage$1Save(NHPackage$1 *package, FILE *file);
+#define NHPackageSave NHPackage$1Save
 
 #endif //NEWHOME_PACKAGE_H
