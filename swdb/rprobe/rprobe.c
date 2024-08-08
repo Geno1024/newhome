@@ -4,12 +4,19 @@
  */
 
 #include <stdio.h>
+#if defined(_WIN64)
+#include <Windows.h>
+#elif defined(__linux__)
 #include <dirent.h>
+#endif
 #include "rprobe.h"
 
 int32_t charging()
 {
 #if defined(_WIN64)
+    LPSYSTEM_POWER_STATUS powerStatus = malloc(sizeof(SYSTEM_POWER_STATUS));
+    GetSystemPowerStatus(powerStatus);
+    return powerStatus->ACLineStatus;
 #elif defined(__linux__)
     DIR *dir = opendir("/sys/class/power_supply/");
     struct dirent *entry;
@@ -31,6 +38,9 @@ int32_t charging()
 int32_t battery()
 {
 #if defined(_WIN64)
+    LPSYSTEM_POWER_STATUS powerStatus = malloc(sizeof(SYSTEM_POWER_STATUS));
+    GetSystemPowerStatus(powerStatus);
+    return powerStatus->BatteryLifePercent;
 #elif defined(__linux__)
     DIR *dir = opendir("/sys/class/power_supply/");
     struct dirent *entry;
