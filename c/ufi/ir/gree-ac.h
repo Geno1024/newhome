@@ -96,6 +96,51 @@ typedef union UfiIrGreeacTemp
     UfiIrGreeacTempF tempF : 4;
 } UfiIrGreeacTemp;
 
+/**
+ * 1        self.mode = buffer[1:4][::-1]
+  1      self.on = buffer[4:5]
+   1     self.fanspeed = buffer[5:7][::-1]
+     1   self.swipe = buffer[7:8]
+     1   self.sleep = buffer[8:9]
+     1   self.temp = buffer[9:13][::-1]
+        self.timer = buffer[13:21][::-1]
+        self.strong = buffer[21:22]
+        self.light = buffer[22:23]
+        self.health = buffer[23:24]
+        self.dry = buffer[24:25]
+        self.swap = buffer[25:26]
+        27: temp2
+        self.reserved = "0001010010"
+        self.udstate = buffer[37:41][::-1]
+        self.lrstate = buffer[41:45][::-1]
+        self.temploc = buffer[45:47][::-1]
+        self.reserved2 = "0001000000000000"
+        self.es = buffer[63:64][::-1] #  节能
+        self.hot = buffer[64:65][::-1] #  辅热
+        self.cksum = buffer[65:69][::-1] #  校验
+
+        if self.version >= 2:
+            self.windauto = buffer[77:78][::-1] # 扫风有动
+            self.tempx0 = buffer[79:83][::-1] # 温度 -13 >> 4
+            self.silent = buffer[114:115][::-1] # 静音
+            self.fanspeedx = buffer[127:130][::-1] # 00 -> auto
+            self.eshare = buffer[131:134][::-1] # E 享
+            self.tempx1 = buffer[135:139][::-1] #  温度 -13
+        else:
+        self.expectcksum = bin(
+            int(self.buffer[1:5][::-1], base=2) +
+            int(self.buffer[9:13][::-1], base=2) +
+            int(self.buffer[17:21][::-1], base=2) +
+            int(self.buffer[25:29][::-1], base=2) +
+            int(self.buffer[41:45][::-1], base=2) +
+            int(self.buffer[49:53][::-1], base=2) +
+            int(self.buffer[57:61][::-1], base=2) +
+            0b1010
+            # (1 if int(self.swap) == 1 else -1) +
+            # (1 if int(self.lrstate) >= 1 else -1) +
+        )[::-1][0:4]
+ */
+
 typedef struct UfiIrGreeacSeq00 {
     UfiIrGreeacMode mode : 3;
     UfiIrGreeacOnoff onoff : 1;
