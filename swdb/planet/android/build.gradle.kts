@@ -15,6 +15,12 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    implementation("androidx.drawerlayout", "drawerlayout", "1.2.0")
+    implementation("androidx.navigation", "navigation-ui-ktx", "2.7.7")
+    implementation("androidx.navigation", "navigation-fragment-ktx", "2.7.7")
+}
+
 val run = BuildCount(project, "run")
 
 val runCount = tasks.register("runCount") {
