@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">New Home</string>
     <string name="activity_name_planet">Planet</string>
+    <string name="planet_nav_header_icon_desc">App Icon</string>
 </resources>

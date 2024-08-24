@@ -9,9 +9,21 @@
     android:paddingTop="@dimen/vertical_margin"
     android:paddingBottom="@dimen/vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    <ImageView
+        android:id="@+id/planet_nav_header_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/planet_nav_header_icon_desc"
+        android:paddingTop="@dimen/nav_height_vertical_spacing"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_height_vertical_spacing"
-        android:text="@string/app_name"/>
+        android:text="@string/app_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+    <TextView
+        android:id="@+id/planet_nav_header_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/nav_height_vertical_spacing"/>
 </LinearLayout>
