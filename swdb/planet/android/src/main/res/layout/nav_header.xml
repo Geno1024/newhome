@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
     android:orientation="vertical"
+    android:background="@color/colorPrimary"
     android:paddingLeft="@dimen/horizontal_margin"
     android:paddingRight="@dimen/horizontal_margin"
     android:paddingTop="@dimen/vertical_margin"
-    android:paddingBottom="@dimen/vertical_margin"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    android:paddingBottom="@dimen/vertical_margin">
     <ImageView
         android:id="@+id/planet_nav_header_icon"
         android:layout_width="wrap_content"

@@ -54,7 +54,7 @@ android {
         applicationId = "g.sw.planet"
         minSdk = 16
         targetSdk = 35
-        versionCode = android.read()+1
+        versionCode = android.read() + 1
         versionName = "0.0.1.$versionCode"
     }
 }
