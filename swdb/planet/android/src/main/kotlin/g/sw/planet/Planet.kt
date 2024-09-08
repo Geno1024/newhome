@@ -10,7 +10,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -30,6 +29,7 @@ class Planet : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_planet)
+        setSupportActionBar(findViewById(R.id.planet_appbar_toolbar))
         val rootDrawer = findViewById<DrawerLayout>(R.id.planet_root)
         val navView = findViewById<NavigationView>(R.id.planet_navigation)
         val navController = findNavController(R.id.planet_fragment)
@@ -37,20 +37,13 @@ class Planet : AppCompatActivity()
         getFilePermission()
 
         initNavBar()
-        appBarConfiguration = AppBarConfiguration(navView.menu, rootDrawer)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.planet_nav_reqtest, R.id.planet_nav_devinfo),
+            rootDrawer
+        )
 
+        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        setSupportActionBar(findViewById<Toolbar>(R.id.planet_appbar_toolbar).apply {
-            setNavigationOnClickListener {
-                rootDrawer.openDrawer(navView)
-            }
-        })
-        navView.setNavigationItemSelectedListener {
-            println(it)
-            rootDrawer.closeDrawer(navView)
-            true
-        }
 
         Toast.makeText(this, getAppSize().toString(), Toast.LENGTH_LONG).show()
     }
@@ -58,7 +51,7 @@ class Planet : AppCompatActivity()
     private fun initNavBar()
     {
         initNavBarHeader()
-        initNavBarMenu()
+//        initNavBarMenu()
     }
 
     private fun initNavBarHeader() = findViewById<NavigationView>(R.id.planet_navigation)

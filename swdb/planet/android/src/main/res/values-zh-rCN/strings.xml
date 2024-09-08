@@ -3,4 +3,7 @@
     <string name="app_name">New Home</string>
     <string name="activity_name_planet">行星</string>
     <string name="planet_nav_header_icon_desc">应用图标</string>
+
+    <string name="sws_devinfo_title">调试信息</string>
+    <string name="sws_reqtest_title">请求测试</string>
 </resources>
