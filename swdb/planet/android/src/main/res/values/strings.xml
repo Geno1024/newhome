@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="stellar">Stellar</string>
+    <string name="planet">Planet</string>
+
+    <string name="req_path">Path</string>
+    <string name="req_param">Params</string>
+
     <string name="app_name">New Home</string>
     <string name="activity_name_planet">Planet</string>
     <string name="planet_nav_header_icon_desc">App Icon</string>
 
     <string name="sws_devinfo_title">DevInfo</string>
+
     <string name="sws_reqtest_title">Request Test</string>
+    <string name="sws_reqtest_param_add" translatable="false">+</string>
+    <string name="sws_reqtest_param_del" translatable="false">-</string>
+    <string name="sws_reqtest_send">Send</string>
 </resources>

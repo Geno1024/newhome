@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="stellar">恒星</string>
+    <string name="planet">行星</string>
+
+    <string name="req_path">路径</string>
+    <string name="req_param">参数</string>
+
     <string name="app_name">New Home</string>
     <string name="activity_name_planet">行星</string>
     <string name="planet_nav_header_icon_desc">应用图标</string>
 
     <string name="sws_devinfo_title">调试信息</string>
+
     <string name="sws_reqtest_title">请求测试</string>
+    <string name="sws_reqtest_send">发送</string>
 </resources>

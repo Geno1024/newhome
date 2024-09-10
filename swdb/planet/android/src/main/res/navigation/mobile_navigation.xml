@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/planet_mobile_navigation"
-    app:startDestination="@id/planet_nav_devinfo">
+    app:startDestination="@id/planet_nav_reqtest">
     <fragment
         android:id="@id/planet_nav_reqtest"
         android:name="g.sw.planet.sws.ReqTest"
-        android:label="@string/sws_reqtest_title"/>
+        android:label="@string/sws_reqtest_title"
+        tools:layout="@layout/sws_reqtest"/>
     <fragment
         android:id="@id/planet_nav_devinfo"
         android:name="g.sw.planet.sws.DevInfo"

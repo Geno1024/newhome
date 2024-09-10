@@ -52,7 +52,7 @@ android {
     namespace = "g.sw.planet"
     defaultConfig {
         applicationId = "g.sw.planet"
-        minSdk = 16
+        minSdk = 17
         targetSdk = 35
         versionCode = android.read() + 1
         versionName = "0.0.1.$versionCode"
