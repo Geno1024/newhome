@@ -11,7 +11,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import g.sw.planet.R
-import g.ufi.GNewHomeReq
+import g.ufi.GNewHome
 
 class ReqTest : Fragment()
 {
@@ -43,7 +43,7 @@ class ReqTest : Fragment()
                     handler.sendMessage(
                         Message().apply {
                             data = Bundle().apply {
-                                putString("GNewHomeRsp", GNewHomeReq(
+                                putString("GNewHomeRsp", GNewHome.Request(
                                     stellar.toString(),
                                     path.toString(),
                                     params.toString().split("\n")
