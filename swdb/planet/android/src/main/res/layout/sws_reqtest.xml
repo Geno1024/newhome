@@ -39,36 +39,20 @@
         android:layout_height="wrap_content"
         android:text="@string/req_param"
         android:labelFor="@id/sws_reqtest_params"/>
-    <ScrollView
+    <EditText
         android:id="@+id/sws_reqtest_params"
         android:layout_below="@id/sws_reqtest_params_label"
-        android:layout_above="@id/sws_reqtest_send_split"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:id="@+id/sws_reqtest_params_inside"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <Button
-                android:id="@+id/sws_reqtest_params_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:text="@string/sws_reqtest_param_add"/>
-        </LinearLayout>
-    </ScrollView>
-    <View
-        android:id="@+id/sws_reqtest_send_split"
         android:layout_above="@id/sws_reqtest_send"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@android:color/darker_gray"/>
+        android:layout_height="wrap_content"
+        android:gravity="start|top"
+        android:autofillHints="name"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical"/>
     <Button
         android:id="@+id/sws_reqtest_send"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sws_reqtest_send"/>
-
 </RelativeLayout>
