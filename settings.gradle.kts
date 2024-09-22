@@ -20,6 +20,8 @@ dependencyResolutionManagement {
 
 include(":ufi")
 include(":swdb:planet:android")
+include(":swdb:greqsndr")
+include(":swdb:mgmts")
 include(":swdb:reqdistr")
 include(":swdb:svctpl")
 //File("swdb").list()?.forEach { include(":swdb:$it".apply(::println)) }
